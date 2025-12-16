@@ -32,10 +32,40 @@
             color: #999;
             padding: 40px;
         }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
     <h1>All Posts</h1>
+
+     {{-- Tampilkan pesan sukses --}}
+    @if(session('success'))
+        <div class="success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <a href="{{ route('posts.create') }}" class="btn">+ Tambah Post Baru</a>
 
     @if($posts->count() > 0)
         @foreach($posts as $post)

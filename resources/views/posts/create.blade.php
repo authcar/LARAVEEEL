@@ -17,28 +17,31 @@
         }
         .error { color: red; }
     </style>
-    <h2>Tambah Post</h2>
-        {{-- menampilkan error --}}
-        @if ($errors->any())
-            <div class="error">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 </head>
-<form action="{{ route('posts.store') }}" method="POST">
-    @csrf
-    <label>Judul</label>
-    <input type="text" name="title" value="{{old('title') }}">
-
-    <label>Isi</label>
-    <textarea name="content" rows="5">{{old('content') }}</textarea>
-    
-    <button type="submit">Simpan</button>
-    <a href="{{ route('posts.index') }}">Kembali</a>
-</form>
-
 <body>
+    <h2>Tambah Post</h2>
+    
+    {{-- menampilkan error --}}
+    @if ($errors->any())
+        <div class="error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
+        <label>Judul</label>
+        <input type="text" name="title" value="{{ old('title') }}">
+
+        <label>Isi</label>
+        <textarea name="content" rows="5">{{ old('content') }}</textarea>
+        
+        <button type="submit">Simpan</button>
+        <a href="{{ route('posts.index') }}">Kembali</a>
+    </form>
+</body>
+</html>
