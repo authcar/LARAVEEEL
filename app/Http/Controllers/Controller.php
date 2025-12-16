@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use Illuminate\Routing\Controller; // 🔴 PENTING
+use Illuminate\Routing\Controller as BaseController; // 🔴 PENTING
 
-class PostController extends Controller
+class Controller extends BaseController
 {
     public function index()
     {
