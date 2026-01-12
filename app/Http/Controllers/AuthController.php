@@ -26,7 +26,7 @@ class AuthController extends Controller
 
         //dd(Hash::check($req->password, bcrypt($dosen->password)));
         // dd(Hash::check($req->password, Hash::make($req->password)));
-        if ($dosen && Hash::check($req->password, Hash::make($req->password))) {
+        if ($dosen && Hash::check($req->password, $dosen->password)) {
             auth()->login($dosen);
             return redirect()->route('dashboard');
         }
